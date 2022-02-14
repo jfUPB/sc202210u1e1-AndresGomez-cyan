@@ -2,5 +2,14 @@
 // 000423788
 // andresm.gomezg@upb.co
 (START)
-    @START
-    0;JMP
+
+string key = null;
+key = Console.ReadLine();
+if (key == "f")
+{
+    Console.WriteLine("█");
+}
+else if (key == "c")
+{
+    Console.Clear();
+}
