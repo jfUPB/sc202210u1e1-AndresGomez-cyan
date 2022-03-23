@@ -2,16 +2,15 @@
 // 000423788
 // andresm.gomezg@upb.co
 
-(START)			// while (true)
+(START)
 	@KBD
 	D=M
-	@FILLORCLEAR	// if (kbd != 0)
+	@FILLORCLEAR
 	D;JNE
 	@START
 	0;JMP
 
 (FILLORCLEAR)
-// if key = f --> draw else if key = c --> clear
 	@j
 	M = D // save key
 	@70  // press f
