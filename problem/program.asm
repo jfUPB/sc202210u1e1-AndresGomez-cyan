@@ -2,50 +2,69 @@
 // 000423788
 // andresm.gomezg@upb.co
 
-(START)
-	@KBD
-	D=M
-	@FILLORCLEAR
-	D;JNE
-	@START
-	0;JMP
+@70			
+	D = A
+	@teclaf
+	M = D
+	@67			
+	D = A
+	@teclac
+	M=D
 
-(FILLORCLEAR)
-	@j
-	M = D // save key
-	@70  // press f
-	D = D-A
-	@FILL
-	D;JEQ
-	@j
+(INICIO)
+	@KBD		
 	D = M
-	@67
-	D = D - A
-	@CLEAR
-	D;JEQ
-	@START
+
+	@VERIFICATECLA	
+	D;JNE
+
+	@INICIO
 	0;JMP
 
-(FILL)
-	@value
-	M = -1
-	@DRAW
-	0;JMP
+(VERIFICATECLA)
+	@tecla		
+	M = D 
 
-(CLEAR)
-	@value
-	M = 0
-	@DRAW
-	0;JMP
-
-(DRAW)
-	@SCREEN
+	@SCREEN		
 	D = A
 	@i
 	M = D
 
+	@linea
+	M = -1
+
+	@teclaf  	
+	D = M
+
+	@tecla		
+	D = D - M	
+
+	@NEGRO		
+	D;JEQ
+
+	@teclac
+	D = M
+	@tecla
+	D = D - M
+
+	@BLANCO
+	D;JEQ
+
+	@INICIO		
+	0;JMP
+
+(NEGRO)
+	@LOOP
+	0;JMP
+
+(BLANCO)
+	@linea
+	M = 0
+	@LOOP
+	0;JMP
+
 (LOOP)
-	@value
+	@linea
 	D = M
 	@i
 	A = M
@@ -58,5 +77,5 @@
 	D = M - D
 	@LOOP
 	D;JNE
-	@START
+	@INICIO
 	0;JMP
